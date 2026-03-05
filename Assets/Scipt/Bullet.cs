@@ -1,24 +1,26 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class BulletControl : MonoBehaviour
 {
     public float speed;
+    public float damage ;
+
     void Update()
     {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            this.transform.position = transform.position;
-            this.transform.rotation = transform.rotation;
-            Vector3 direction = (ray.GetPoint(10f) - transform.position).normalized;
-
-            this.transform.position += transform.forward * speed * Time.deltaTime;
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "RunEnemy")
+        if (collision.gameObject.CompareTag("RunEnemy"))
         {
-            Destroy(this.gameObject);
+            EnemyStat enemy = collision.gameObject.GetComponent<EnemyStat>();
+
+
+            enemy.Health -= damage;
+           
+
+            Destroy(gameObject);
         }
     }
 }

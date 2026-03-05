@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,15 +30,25 @@ public class PlayerMovement : MonoBehaviour
         Vector3 tempPos = new Vector3(moveAction.action.ReadValue<Vector2>().x, 0, moveAction.action.ReadValue<Vector2>().y);
         this.transform.position += tempPos * speed * Time.deltaTime;
 
-        if(fireAction.action.triggered && remainingCooldown <= 0f)
+        if (fireAction.action.triggered && remainingCooldown <= 0f)
         {
-            Vector3 spawnPos = transform.position + transform.forward * BulletSpawnSistanceToPplayer;
-            Quaternion spawnRot = transform.rotation ;
+            Vector2 mousePos = Mouse.current.position.ReadValue();
+            Ray ray = Camera.main.ScreenPointToRay(mousePos);
 
-            bullet = Instantiate(bulletPrefab, spawnPos, spawnRot);
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            {
+                Vector3 spawnPos = transform.position + transform.forward * BulletSpawnSistanceToPplayer;
+
+                Vector3 direction = hit.point - spawnPos;
+
+                direction.y = 0f;
+
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                print(rotation);
+                Instantiate(bulletPrefab, spawnPos, rotation);
+            }
 
             remainingCooldown = cooldown;
-
         }
     }
 }

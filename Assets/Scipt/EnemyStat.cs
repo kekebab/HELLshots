@@ -22,6 +22,9 @@ public class EnemyStat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if (CompareTag("RunEnemy") ){  //debug
+        //    print(Health);
+        //}
         float distance = Vector3.Distance(transform.position, Player.position);
 
         if (distance <= DetectionRange)
@@ -38,8 +41,7 @@ public class EnemyStat : MonoBehaviour
             }
         }
 
-
-        if (Health < 0)
+        if (Health <= 0)
         {
            Death();
         }
@@ -48,7 +50,6 @@ public class EnemyStat : MonoBehaviour
     void Death()
     {
         Destroy(this.gameObject);
-        
     }
 
     public void OnTriggerEnter(Collider other)
@@ -63,6 +64,9 @@ public class EnemyStat : MonoBehaviour
                 print("il y a eu contact");
             }
         }
+        
+
+
     }
 
     public void OnDrawGizmos()
