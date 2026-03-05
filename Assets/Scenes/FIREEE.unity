@@ -150,7 +150,8 @@ Transform:
   m_LocalPosition: {x: 0.13000005, y: 15.65, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2107583480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!114 &313633894
@@ -483,9 +484,16 @@ MonoBehaviour:
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   fireAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   bulletPrefab: {fileID: 3624822173489365261, guid: 1e001b674f1778e4f9fa4f1868f7181f, type: 3}
-  bullet: {fileID: 0}
+  bullet: {fileID: 3624822173489365261, guid: 1e001b674f1778e4f9fa4f1868f7181f, type: 3}
   cooldown: 1
   remainingCooldown: 0
+  cooldownGrenade: 15
+  remainingCooldownGrenade: 0
+  specialAction: {fileID: -7532033521230140196, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  grenadePrefab: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}
+  grenade: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}
+  force: 1
+  aim: {fileID: 0}
 --- !u!136 &1997602818
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -539,7 +547,7 @@ MeshRenderer:
     firstSubMesh: 0
     subMeshCount: 0
   m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
+  m_ProbeAnchor: {fileID: 1997602821}
   m_LightProbeVolumeOverride: {fileID: 0}
   m_ScaleInLightmap: 1
   m_ReceiveGI: 1
@@ -596,6 +604,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  grenadeTargetPoint: {x: 0, y: 0, z: 0}
 --- !u!65 &1997602823
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -708,12 +717,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107583478}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: -0.084186025, y: -0.1484525, z: 0.21201213, w: 0.96225023}
+  m_LocalPosition: {x: -0.13000005, y: 2.3352537, z: 15.955221}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 313633893}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &2107583481
 MonoBehaviour:
@@ -748,7 +757,6 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 2107583480}
   - {fileID: 313633893}
   - {fileID: 1997602821}
   - {fileID: 445121954}
