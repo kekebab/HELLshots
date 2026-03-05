@@ -8,6 +8,8 @@ public class EnemyStat : MonoBehaviour
     public Transform Player;
     public float DetectionRange;
     public float ShootingDistance;
+
+    public float ContactDamage;
    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -36,7 +38,6 @@ public class EnemyStat : MonoBehaviour
             }
         }
 
-          //  Agent.SetDestination(Player.position);
 
         if (Health < 0)
         {
@@ -48,6 +49,20 @@ public class EnemyStat : MonoBehaviour
     {
         Destroy(this.gameObject);
         
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (CompareTag("RunEnemy")  && other.CompareTag("Player"))
+        {
+            PlayerStats playerHealth = other.GetComponent<PlayerStats>();
+
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(ContactDamage);
+                print("il y a eu contact");
+            }
+        }
     }
 
     public void OnDrawGizmos()

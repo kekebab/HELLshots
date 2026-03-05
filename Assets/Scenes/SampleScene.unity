@@ -685,8 +685,10 @@ GameObject:
   - component: {fileID: 1246149614}
   - component: {fileID: 1246149613}
   - component: {fileID: 1246149612}
-  - component: {fileID: 1246149616}
   - component: {fileID: 1246149617}
+  - component: {fileID: 1246149616}
+  - component: {fileID: 1246149618}
+  - component: {fileID: 1246149619}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -831,6 +833,42 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1246149618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246149611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a2a72337a75784794ce72be620ec33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  Health: 100
+--- !u!136 &1246149619
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246149611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1514877537
 GameObject:
   m_ObjectHideFlags: 0
@@ -969,6 +1007,38 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 36
       objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1507224269197928084, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4380409924791368657, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
       propertyPath: m_Speed
       value: 10
@@ -1029,6 +1099,14 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1246149615}
+    - target: {fileID: 7103168205545375833, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: ContactDamage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7103168205545375833, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
+      propertyPath: DetectionRange
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 7304957338806309670, guid: 4689f2a599e26bb408848208839b18ac, type: 3}
       propertyPath: m_Name
       value: RunEnemy
