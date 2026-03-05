@@ -16,11 +16,8 @@ public class BulletControl : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-
-
-        if(collision.gameObject.tag == "Enemy")
+        if(collision.gameObject.tag == "RunEnemy")
         {
-            Destroy(collision.gameObject);
             Destroy(this.gameObject);
         }
     }

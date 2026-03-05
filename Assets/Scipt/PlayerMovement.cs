@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public InputActionReference fireAction;
     public GameObject bulletPrefab;
     public GameObject bullet;
+    public float BulletSpawnSistanceToPplayer; 
 
     public float cooldown;
     public float remainingCooldown;
@@ -29,24 +30,15 @@ public class PlayerMovement : MonoBehaviour
         this.transform.position += tempPos * speed * Time.deltaTime;
 
         if(fireAction.action.triggered && remainingCooldown <= 0f)
-        {  
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
-            
-            bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position;
-            bullet.transform.rotation = transform.rotation;
-            Vector3 direction = (ray.GetPoint(10f) - transform.position).normalized;
+        {
+            Vector3 spawnPos = transform.position + transform.forward * BulletSpawnSistanceToPplayer;
+            Quaternion spawnRot = transform.rotation ;
 
-            bullet.transform.position += transform.forward * speed * Time.deltaTime;
+            bullet = Instantiate(bulletPrefab, spawnPos, spawnRot);
 
             remainingCooldown = cooldown;
-                
-            
-            
-        }
 
-        
+        }
     }
 }
 
