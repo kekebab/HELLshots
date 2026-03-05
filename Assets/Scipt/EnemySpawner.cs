@@ -35,17 +35,15 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnerEnemy()
     {
+            Vector3 spawnPos =
+                new Vector3(
+                    Random.Range(minPosX, maxPosX),
+                    height,
+                    Random.Range(minPosY, maxPosY));
 
-        Vector3 spawnPos =
-            new Vector3(
-                Random.Range(minPosX, maxPosX),
-                height,
-                Random.Range(minPosY, maxPosY));
 
-
-        print("Spawn at " + spawnPos);
-        Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
-
+            print("Spawn at " + spawnPos);
+            Instantiate(EnemyPrefab, spawnPos, Quaternion.identity);
     }
 
     // Update is called once per frame
