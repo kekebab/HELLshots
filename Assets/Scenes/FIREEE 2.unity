@@ -468,6 +468,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShooterEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3406117344951962358, guid: 4abad8ae43e0a7b4ab836e58a6e7a904, type: 3}
+      propertyPath: m_TagString
+      value: RunEnemy
+      objectReference: {fileID: 0}
     - target: {fileID: 4435460566171586960, guid: 4abad8ae43e0a7b4ab836e58a6e7a904, type: 3}
       propertyPath: m_StoppingDistance
       value: 0
@@ -891,7 +895,7 @@ MonoBehaviour:
   BulletSpawnSistanceToPplayer: 3
   cooldown: 0.15
   remainingCooldown: 0
-  cooldownGrenade: 0
+  cooldownGrenade: 4
   remainingCooldownGrenade: 0
   specialAction: {fileID: -7532033521230140196, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   grenadePrefab: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}

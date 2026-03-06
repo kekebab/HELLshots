@@ -156,5 +156,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Grenade
   cooldown: 5
+  damage: 10
+  explosionRadius: 3
   ExplosionPrefab: {fileID: 3376760212792355854, guid: a0324dcd83977f548bbbd35419c5fdc7, type: 3}
-  Explosion: {fileID: 3376760212792355854, guid: a0324dcd83977f548bbbd35419c5fdc7, type: 3}
