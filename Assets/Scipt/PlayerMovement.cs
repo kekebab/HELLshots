@@ -14,11 +14,18 @@ public class PlayerMovement : MonoBehaviour
 
     public float cooldown;
     public float remainingCooldown;
+    public float cooldownGrenade;
+    public float remainingCooldownGrenade;
+    public InputActionReference specialAction;
+    public GameObject grenadePrefab;
+    public GameObject grenade;
+    public float force;
+    public PlayerAim aim;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        aim = this.GetComponent<PlayerAim>();
         
     }
 
@@ -27,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     {   
         //print("Virtual stick : " + moveAction.action.ReadValue<Vector2>());
         if (remainingCooldown > 0) remainingCooldown -= Time.deltaTime;
+        if (remainingCooldownGrenade > 0) remainingCooldownGrenade -= Time.deltaTime;
         Vector3 tempPos = new Vector3(moveAction.action.ReadValue<Vector2>().x, 0, moveAction.action.ReadValue<Vector2>().y);
         this.transform.position += tempPos * speed * Time.deltaTime;
 
@@ -47,9 +55,32 @@ public class PlayerMovement : MonoBehaviour
                 print(rotation);
                 Instantiate(bulletPrefab, spawnPos, rotation);
             }
+        
+        if(fireAction.action.triggered && remainingCooldown <= 0f)
+        {  
+            Vector3 spawnPos = transform.position + transform.forward * 1f;
+            Quaternion spawnRot = transform.rotation;
+
+            bullet = Instantiate(bulletPrefab, spawnPos, spawnRot);
+
+            
 
             remainingCooldown = cooldown;
         }
+        if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
+        {
+            Vector3 spawnPos = transform.position + transform.forward * 1.2f;
+            float distance = (aim.grenadeTargetPoint - transform.position).magnitude;
+            distance = Mathf.Clamp(distance, 3f, 12.5f);
+            Quaternion spawnRot = transform.rotation;
+            
+            grenade = Instantiate(grenadePrefab, spawnPos, spawnRot);
+            Rigidbody rigid = grenade.GetComponent<Rigidbody>();
+            
+            rigid.AddForce(transform.forward * distance * force, ForceMode.Impulse);
+            remainingCooldownGrenade = cooldownGrenade;
+            
+        }   
     }
 }
 

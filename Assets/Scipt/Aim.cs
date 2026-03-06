@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerAim : MonoBehaviour
 {
     public LayerMask groundMask;
+    public Vector3 grenadeTargetPoint;
 
     void Update()
     {
@@ -12,11 +13,14 @@ public class PlayerAim : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 100f, groundMask))
         {
+            grenadeTargetPoint = hit.point;
+
             Vector3 lookPos = hit.point;
             lookPos.y = transform.position.y;
             // Le joueur regarde ce point
             transform.LookAt(lookPos);
         }
+    
     }
 }
 
