@@ -12,15 +12,13 @@ public class BulletControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("RunEnemy"))
+        if (collision.gameObject.CompareTag("RunEnemy") || collision.gameObject.CompareTag("ShooterEnemy"))
         {
             EnemyStat enemy = collision.gameObject.GetComponent<EnemyStat>();
 
-
-            enemy.Health -= damage;
-           
-
+            enemy.Health -= damage; 
             Destroy(gameObject);
         }
+      Destroy(gameObject);
     }
 }
