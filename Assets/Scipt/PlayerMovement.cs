@@ -67,19 +67,19 @@ public class PlayerMovement : MonoBehaviour
 
             remainingCooldown = cooldown;
         }
-        if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
-        {
-            Vector3 spawnPos = transform.position + transform.forward * 1.2f;
-            float distance = (aim.grenadeTargetPoint - transform.position).magnitude;
-            distance = Mathf.Clamp(distance, 3f, 12.5f);
-            Quaternion spawnRot = transform.rotation;
-            
-            grenade = Instantiate(grenadePrefab, spawnPos, spawnRot);
-            Rigidbody rigid = grenade.GetComponent<Rigidbody>();
-            
-            rigid.AddForce(transform.forward * distance * force, ForceMode.Impulse);
-            remainingCooldownGrenade = cooldownGrenade;
-            
+            if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
+            {
+                Vector3 spawnPos = transform.position + transform.forward * 1.2f;
+                float distance = (aim.grenadeTargetPoint - transform.position).magnitude;
+                distance = Mathf.Clamp(distance, 3f, 12.5f);
+                Quaternion spawnRot = transform.rotation;
+
+                grenade = Instantiate(grenadePrefab, spawnPos, spawnRot);
+                Rigidbody rigid = grenade.GetComponent<Rigidbody>();
+
+                rigid.AddForce(transform.forward * distance * force, ForceMode.Impulse);
+                remainingCooldownGrenade = cooldownGrenade;
+            }
         }   
     }
 }

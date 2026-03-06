@@ -887,10 +887,17 @@ MonoBehaviour:
   moveAction: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   fireAction: {fileID: 1120369429361536294, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   bulletPrefab: {fileID: 8585542772986347399, guid: f1c24dc36b65de24ab16093f518a7397, type: 3}
-  bullet: {fileID: 0}
+  bullet: {fileID: 8585542772986347399, guid: f1c24dc36b65de24ab16093f518a7397, type: 3}
   BulletSpawnSistanceToPplayer: 3
   cooldown: 0.15
   remainingCooldown: 0
+  cooldownGrenade: 0
+  remainingCooldownGrenade: 0
+  specialAction: {fileID: -7532033521230140196, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  grenadePrefab: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}
+  grenade: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}
+  force: 1
+  aim: {fileID: 1246149620}
 --- !u!54 &1246149617
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -969,6 +976,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 1
+  grenadeTargetPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &1514877537
 GameObject:
   m_ObjectHideFlags: 0
