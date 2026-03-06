@@ -1084,7 +1084,7 @@ MonoBehaviour:
   BulletSpawnSistanceToPplayer: 3
   cooldown: 0.15
   remainingCooldown: 0
-  cooldownGrenade: 15
+  cooldownGrenade: 10
   remainingCooldownGrenade: 0
   specialAction: {fileID: -7532033521230140196, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   grenadePrefab: {fileID: 5238442495353956254, guid: d922e79735a8f3b40ae3acac70f792a9, type: 3}

@@ -29,7 +29,7 @@ public class Grenade : MonoBehaviour
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("RunEnemy"))
+            if (hit.CompareTag("RunEnemy")||hit.CompareTag("ShooterEnemy"))
             {
                 EnemyStat enemy = hit.GetComponent<EnemyStat>();
                 if (enemy != null)
@@ -37,6 +37,7 @@ public class Grenade : MonoBehaviour
                     enemy.Health -= damage;
                 }
             }
+            
         }
 
         Destroy(explosion, 0.2f);
