@@ -10,7 +10,14 @@ public class EnemyStat : MonoBehaviour
     public float ShootingDistance;
 
     public float ContactDamage;
-   
+
+
+    public GameObject BulletEnemyPrefab;
+    public Transform shootPoint;
+
+    public float fireRate = 1f;
+    private float fireCooldown; 
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -38,6 +45,11 @@ public class EnemyStat : MonoBehaviour
             {
                 Agent.ResetPath();
                 transform.LookAt(Player);
+
+                if (CompareTag("ShooterEnemy"))
+                {
+                    Shoot();
+                }
             }
         }
 
@@ -46,6 +58,26 @@ public class EnemyStat : MonoBehaviour
            Death();
         }
     }
+
+
+    void Shoot()
+    {
+        if (fireCooldown > 0)
+            fireCooldown -= Time.deltaTime;
+
+        if (fireCooldown <= 0)
+        {
+            Vector3 direction = (Player.position - shootPoint.position).normalized;
+            direction.y = 0f;
+
+            Quaternion rot = Quaternion.LookRotation(direction);
+
+            Instantiate(BulletEnemyPrefab, shootPoint.position, rot);
+
+            fireCooldown = fireRate;
+        }
+    }
+
 
     void Death()
     {
@@ -64,9 +96,6 @@ public class EnemyStat : MonoBehaviour
                 print("il y a eu contact");
             }
         }
-        
-
-
     }
 
     public void OnDrawGizmos()

@@ -20,7 +20,6 @@ public class PlayerAim : MonoBehaviour
             // Le joueur regarde ce point
             transform.LookAt(lookPos);
         }
-    
     }
 }
 
