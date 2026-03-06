@@ -22,11 +22,15 @@ public class PlayerMovement : MonoBehaviour
     public float force;
     public PlayerAim aim;
 
+    private AudioSource audioSource;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        aim = this.GetComponent<PlayerAim>();
-        
+        aim = GetComponent<PlayerAim>();
+        audioSource = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -39,27 +43,22 @@ public class PlayerMovement : MonoBehaviour
         this.transform.position += tempPos * speed * Time.deltaTime;
 
         if (fireAction.action.triggered && remainingCooldown <= 0f)
+    {
+        Vector2 mousePos = Mouse.current.position.ReadValue();
+        Ray ray = Camera.main.ScreenPointToRay(mousePos);
+
+        if (Physics.Raycast(ray, out RaycastHit hit, 100f))
         {
-            Vector2 mousePos = Mouse.current.position.ReadValue();
-            Ray ray = Camera.main.ScreenPointToRay(mousePos);
+            Vector3 spawnPos = transform.position + transform.forward * BulletSpawnSistanceToPplayer;
+            Vector3 direction = hit.point - spawnPos;
+            direction.y = 0f;
 
-            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
-            {
-                Vector3 spawnPos = transform.position + transform.forward * BulletSpawnSistanceToPplayer;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            audioSource.PlayOneShot(audioSource.clip);
+            Instantiate(bulletPrefab, spawnPos, rotation);
+        }
+    }
 
-                Vector3 direction = hit.point - spawnPos;
-
-                direction.y = 0f;
-
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                print(rotation);
-                Instantiate(bulletPrefab, spawnPos, rotation);
-            }
-        
-
-
-        
-        }  
         if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
             {
                 Vector3 spawnPos = transform.position + transform.forward * 1.2f;
