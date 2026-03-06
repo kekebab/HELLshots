@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eff0e05363ae7d4bbabc5e1b62b9b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStat
-  Health: 40
+  Health: 20
   Agent: {fileID: 4165907765019450422}
   Player: {fileID: 0}
   DetectionRange: 100
