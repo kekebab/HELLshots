@@ -157,9 +157,12 @@ MonoBehaviour:
   Health: 10
   Agent: {fileID: 4380409924791368657}
   Player: {fileID: 0}
-  DetectionRange: 25
+  DetectionRange: 100
   ShootingDistance: 0
   ContactDamage: 10
+  BulletEnemyPrefab: {fileID: 0}
+  shootPoint: {fileID: 0}
+  fireRate: 1
 --- !u!195 &4380409924791368657
 NavMeshAgent:
   m_ObjectHideFlags: 0
