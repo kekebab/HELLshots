@@ -10,15 +10,12 @@ public class Grenade : MonoBehaviour
     void Update()
     {
         cooldown -= Time.deltaTime;
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
         if (cooldown <= 0)
         {
             Explode();
         }
     }
+
 
     private void Explode()
     {
