@@ -56,6 +56,7 @@ public class EnemyStat : MonoBehaviour
         if (Health <= 0)
         {
            Death();
+
         }
     }
 
@@ -105,4 +106,5 @@ public class EnemyStat : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, ShootingDistance);
     }
+    
 }
