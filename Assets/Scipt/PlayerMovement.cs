@@ -56,18 +56,11 @@ public class PlayerMovement : MonoBehaviour
                 Instantiate(bulletPrefab, spawnPos, rotation);
             }
         
-        if(fireAction.action.triggered && remainingCooldown <= 0f)
-        {  
-            Vector3 spawnPos = transform.position + transform.forward * 1f;
-            Quaternion spawnRot = transform.rotation;
 
-            bullet = Instantiate(bulletPrefab, spawnPos, spawnRot);
 
-            
-
-            remainingCooldown = cooldown;
-        }
-            if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
+        
+        }  
+        if (specialAction.action.triggered && remainingCooldownGrenade <= 0f)
             {
                 Vector3 spawnPos = transform.position + transform.forward * 1.2f;
                 float distance = (aim.grenadeTargetPoint - transform.position).magnitude;
@@ -79,8 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
                 rigid.AddForce(transform.forward * distance * force, ForceMode.Impulse);
                 remainingCooldownGrenade = cooldownGrenade;
-            }
-        }   
+            } 
     }
 }
 
