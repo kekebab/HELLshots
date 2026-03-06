@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
     public void TakeDamage(float damage)
     {
         Health -= damage;
+        print("il a pris des damage");
 
         if (Health <= 0)
         {
